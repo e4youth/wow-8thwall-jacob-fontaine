@@ -1,0 +1,99 @@
+<!-- Copyright (c) 2022 8th Wall, Inc. -->
+<!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
+
+<div class="over">
+  <span id="promptText">Tap to place Jacob Fontaine</span>
+  <span id="captionText"></span>
+  <!-- <button onclick="document.getElementById('DialogueSound').play()">Play Audio</button> -->
+</div>
+
+<!-- Add the tap-place component to the scene so it has an effect -->
+<a-scene
+  tap-place
+  caption-comp
+  landing-page="
+  logoSrc: #efouryouth;
+  logoAlt: e4Youth x Froliq;
+  "
+  xrextras-loading="
+  loadBackgroundColor:#ffffff;
+  cameraBackgroundColor: #000000;
+  loadImage: #efouryouth;
+  loadAnimation: pulse;"
+  xrextras-runtime-error
+  renderer="colorManagement:true; physicallyCorrectLights:true"
+  renderer.useLegacyLights="false;"
+  xrweb="
+    allowedDevices: any;
+    defaultEnvironmentFogIntensity: 0.5; 
+    defaultEnvironmentFloorTexture: #groundTex; 
+    defaultEnvironmentFloorColor: #FFF;
+    defaultEnvironmentSkyBottomColor: #B4C4CC; 
+    defaultEnvironmentSkyTopColor: #5ac8fa;
+    defaultEnvironmentSkyGradientStrength: 0.5;">
+  <!-- We can define assets here to be loaded when A-Frame initializes -->
+  <a-assets>
+    <img id="efouryouth" src="assets/e4YouthLogo.png" />
+    <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
+    <!-- <audio id="DialogueSound" src="assets/Blackland_Prairie.mp3" preload="auto"></audio> -->
+    <a-asset-item
+      id="jacobModel"
+      src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO6_rogers.glb"></a-asset-item>
+    <audio
+      id="DialogueSound"
+      src="assets/Rogers-Washington-Holy_Cross_Historic_District_.mp3"
+      preload="auto"></audio>
+    <a-entity
+      id="captionController"
+      captions="script: “The Rogers Washington Holy Cross Historic District is a place where faith and family created strength - churches, hospitals, schools - proof of our own foundations.”
+This area is a timeless stamp of Black professionalism in the form of an elegant, middle-class neighborhood that emerged from the late 1940s to the 50s and 60s when most of the homes here were built. Classic midcentury American architecture accompanies a rich and remarkable history here.
+On September 3rd, 2020, Austin City Council voted to historically designate the Rogers Washington Holy Cross District. This is the eighth locally designated historic district, and the first for a mostly African American neighborhood. So much East Austin and Black history has been erased that somebody has to tell it. If you don't hear it – let alone see it. Sometimes it's like it never existed.
+Well, this historical district was developed as a shining light of what is possible. Yes, there was segregation and racism, and white middle-class people were moving out of town to the suburbs. And, yes, the Black professionals in this community provided for themselves by using what they had and building what they needed, right here.
+World War II was over, but the style from that day and time remains evident here. Many of the houses were designed by John Chase himself. Mr. Chase was the first African American graduate of the University of Texas School of Architecture AND he was the first Black architect ever licensed in the state. Many of Austin's brightest Black stars put their heads and hearts together to make this area a reality.
+The chancellor of Huston-Tillotson University lived here, the first ombudsman of UT-Austin lived here, the principal of nearby Kealing Junior High lived here. The Kirk family as in the postal workers, pilots, and eventually mayors, and presidential cabinet members– the Kirk family lived here too. City Council members lived here. And, a Tuskegee Airman lived here. Some of the earliest graduates of desegregated UT-Austin lived here as well."
+      info="duration: 143; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+    <a-entity
+      gltf-model="#jacobModel"
+      anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>
+  </a-assets>
+
+  <a-entity id="dialogueEntity" sound="src: #DialogueSound; autoplay: false; positional: false;">
+  </a-entity>
+
+  <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+  <a-camera
+    id="camera"
+    position="0 8 8"
+    raycaster="objects: .cantap"
+    cursor="
+      fuse: false;
+      rayOrigin: mouse;">
+  </a-camera>
+
+  <a-entity
+    light="
+      type: directional;
+      intensity: 3.9;
+      castShadow: true;
+      shadowMapHeight: 2048;
+      shadowMapWidth: 2048;
+      shadowCameraTop: 40;
+      shadowCameraBottom: -40;
+      shadowCameraRight: 40;
+      shadowCameraLeft: -40;"
+    position="0 10 0"
+    rotation="-90 0 0"
+    shadow>
+  </a-entity>
+
+  <a-light type="ambient" intensity=".7"></a-light>
+  <!-- Adding the cantap class allows the ground to be clicked -->
+  <a-box
+    id="ground"
+    class="cantap"
+    scale="1000 2 1000"
+    position="0 -0.99 0"
+    material="shader: shadow; transparent: true; opacity: 0.4"
+    shadow>
+  </a-box>
+</a-scene>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rosewood Courts / Emancipation Park Jacob Fontaine</title>
+  <meta itemprop="name" content="Rosewood Courts / Emancipation Park Jacob Fontaine">
+  <meta name="twitter:title" content="Rosewood Courts / Emancipation Park Jacob Fontaine">
+  <meta property="og:title" content="Rosewood Courts / Emancipation Park Jacob Fontaine">
+  <meta property="og:site_name" content="Rosewood Courts / Emancipation Park Jacob Fontaine">
+  <meta name="description" content="">
+  <meta itemprop="description" content="">
+  <meta property="og:description" content="">
+  <meta name="twitter:description" content="">
+  <script crossorigin="anonymous" src="./external/xrextras/xrextras.js"></script>
+  <script crossorigin="anonymous" src="./external/landing-page/landing-page.js"></script>
+  <script crossorigin="anonymous" src="./external/xr/xr.js" async="true" data-preload-chunks="face, slam">
+  </script>
+
+<!-- Copyright (c) 2024 8th Wall, Inc. -->
+<!-- head.html is optional; elements will be added to your html head before app.js is loaded. -->
+
+<!-- Use "8thwall:" meta tags to hook into 8th Wall's build process and developer tools. -->
+<!-- <meta name="8thwall:renderer" content="aframe:1.5.0" /> -->
+<script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+<script src="./external/scripts/aframe-extras-7.2.0.min.js" crossorigin="anonymous"></script>
+<meta name="8thwall:package" content="@8thwall.xrextras"/>
+<meta name="8thwall:package" content="@8thwall.landing-page"/>
+
+<!-- Add GIF for sharing -->
+<!-- <meta property="og:image" content="https://i.giphy.com/media/rAi32DNlsWNpItOpDr/giphy.gif" /> -->
+
+</head>
+
+<body>
+<script src="bundle.js"></script>
+<!-- Copyright (c) 2022 8th Wall, Inc. -->
+<!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
+
+<div class="over">
+  <span id="promptText">Tap to place Jacob Fontaine</span>
+  <span id="captionText"></span>
+  <!-- <button onclick="document.getElementById('DialogueSound').play()">Play Audio</button> -->
+</div>
+
+<!-- Add the tap-place component to the scene so it has an effect -->
+<a-scene
+  tap-place
+  caption-comp
+  landing-page="
+  logoSrc: #efouryouth;
+  logoAlt: e4Youth x Froliq;
+  "
+  xrextras-loading="
+  loadBackgroundColor:#ffffff;
+  cameraBackgroundColor: #000000;
+  loadImage: #efouryouth;
+  loadAnimation: pulse;"
+  xrextras-runtime-error
+  renderer="colorManagement:true; physicallyCorrectLights:true"
+  renderer.useLegacyLights="false;"
+  xrweb="
+    allowedDevices: any;
+    defaultEnvironmentFogIntensity: 0.5; 
+    defaultEnvironmentFloorTexture: #groundTex; 
+    defaultEnvironmentFloorColor: #FFF;
+    defaultEnvironmentSkyBottomColor: #B4C4CC; 
+    defaultEnvironmentSkyTopColor: #5ac8fa;
+    defaultEnvironmentSkyGradientStrength: 0.5;">
+  <!-- We can define assets here to be loaded when A-Frame initializes -->
+  <a-assets>
+    <img id="efouryouth" src="assets/e4YouthLogo.png" />
+    <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
+    <!-- <audio id="DialogueSound" src="assets/Blackland_Prairie.mp3" preload="auto"></audio> -->
+    <a-asset-item
+      id="jacobModel"
+      src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO5_rosewood.glb"></a-asset-item>
+    <audio
+      id="DialogueSound"
+      src="assets/Rosewood_Courts__Emancipation_Park.mp3"
+      preload="auto"></audio>
+    <a-entity
+      id="captionController"
+      captions="script: If you travel Southbound from the intersection of 12th Street and Chicon Street toward Huston-Tillotson University, you will make it to the bottom of a short hill, maybe without knowing how unique of a position you're actually in. These grounds hold our challenges and our triumphs, where families found homes and where we reclaimed our freedom. This is a uniquely wondrous historical site in more ways than one. See, on the corner of Rosewood and Chicon, Rosewood Courts, the first public housing project for African Americans in the United States, has been home to East Austin residents since 1939. This community of homes was established as part of President Franklin D. Roosevelt's New Deal, and also was lobbied for by then-Congressman Lyndon Baines Johnson (or LBJ). And then there's a more, extended history of this location as well.
+You see, the site of Rosewood Courts here was originally Emancipation Park, an extremely important social and recreational site where Juneteenth celebrations date all the way back to 1930. This is where Black families reunited to publicly celebrate our freedom and progress on our own terms. Emancipation Park was purchased by Black community members for use by the Black community. This land was originally bought by a formerly enslaved man named Thomas J. White. Once he started the Emancipation Park Association back in 1905, he bought a 5-acre tract right here within two years time.
+So, it's fitting that this place sits at the bottom of a hill, because the stories and significance run deep. What once was a location established to commemorate liberation became a groundbreaking living space. And these apartment buildings were old, and yet – as you can see – they're only getting better with time!"
+      info="duration: 121; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+    <a-entity
+      gltf-model="#jacobModel"
+      anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>
+  </a-assets>
+
+  <a-entity id="dialogueEntity" sound="src: #DialogueSound; autoplay: false; positional: false;">
+  </a-entity>
+
+  <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+  <a-camera
+    id="camera"
+    position="0 8 8"
+    raycaster="objects: .cantap"
+    cursor="
+      fuse: false;
+      rayOrigin: mouse;">
+  </a-camera>
+
+  <a-entity
+    light="
+      type: directional;
+      intensity: 3.9;
+      castShadow: true;
+      shadowMapHeight: 2048;
+      shadowMapWidth: 2048;
+      shadowCameraTop: 40;
+      shadowCameraBottom: -40;
+      shadowCameraRight: 40;
+      shadowCameraLeft: -40;"
+    position="0 10 0"
+    rotation="-90 0 0"
+    shadow>
+  </a-entity>
+
+  <a-light type="ambient" intensity=".7"></a-light>
+  <!-- Adding the cantap class allows the ground to be clicked -->
+  <a-box
+    id="ground"
+    class="cantap"
+    scale="1000 2 1000"
+    position="0 -0.99 0"
+    material="shader: shadow; transparent: true; opacity: 0.4"
+    shadow>
+  </a-box>
+</a-scene>
+
+</body>
+
+</html>

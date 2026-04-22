@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Victory Grill / East 11th Corridor Jacob Fontaine</title>
+  <meta itemprop="name" content="Victory Grill / East 11th Corridor Jacob Fontaine">
+  <meta name="twitter:title" content="Victory Grill / East 11th Corridor Jacob Fontaine">
+  <meta property="og:title" content="Victory Grill / East 11th Corridor Jacob Fontaine">
+  <meta property="og:site_name" content="Victory Grill / East 11th Corridor Jacob Fontaine">
+  <meta name="description" content="">
+  <meta itemprop="description" content="">
+  <meta property="og:description" content="">
+  <meta name="twitter:description" content="">
+  <script crossorigin="anonymous" src="./external/xrextras/xrextras.js"></script>
+  <script crossorigin="anonymous" src="./external/landing-page/landing-page.js"></script>
+  <script crossorigin="anonymous" src="./external/xr/xr.js" async="true" data-preload-chunks="face, slam">
+  </script>
+
+<!-- Copyright (c) 2024 8th Wall, Inc. -->
+<!-- head.html is optional; elements will be added to your html head before app.js is loaded. -->
+
+<!-- Use "8thwall:" meta tags to hook into 8th Wall's build process and developer tools. -->
+<!-- <meta name="8thwall:renderer" content="aframe:1.5.0" /> -->
+<script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+<script src="./external/scripts/aframe-extras-7.2.0.min.js" crossorigin="anonymous"></script>
+<meta name="8thwall:package" content="@8thwall.xrextras"/>
+<meta name="8thwall:package" content="@8thwall.landing-page"/>
+
+<!-- Add GIF for sharing -->
+<!-- <meta property="og:image" content="https://i.giphy.com/media/rAi32DNlsWNpItOpDr/giphy.gif" /> -->
+
+</head>
+
+<body>
+<script src="bundle.js"></script>
+<!-- Copyright (c) 2022 8th Wall, Inc. -->
+<!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
+
+<div class="over">
+  <span id="promptText">Tap to place Jacob Fontaine</span>
+  <span id="captionText"></span>
+  <!-- <button onclick="document.getElementById('DialogueSound').play()">Play Audio</button> -->
+</div>
+
+<!-- Add the tap-place component to the scene so it has an effect -->
+<a-scene
+  tap-place
+  caption-comp
+  landing-page="
+  logoSrc: #efouryouth;
+  logoAlt: e4Youth x Froliq;
+  "
+  xrextras-loading="
+  loadBackgroundColor:#ffffff;
+  cameraBackgroundColor: #000000;
+  loadImage: #efouryouth;
+  loadAnimation: pulse;"
+  xrextras-runtime-error
+  renderer="colorManagement:true; physicallyCorrectLights:true"
+  renderer.useLegacyLights="false;"
+  xrweb="
+    allowedDevices: any;
+    defaultEnvironmentFogIntensity: 0.5; 
+    defaultEnvironmentFloorTexture: #groundTex; 
+    defaultEnvironmentFloorColor: #FFF;
+    defaultEnvironmentSkyBottomColor: #B4C4CC; 
+    defaultEnvironmentSkyTopColor: #5ac8fa;
+    defaultEnvironmentSkyGradientStrength: 0.5;">
+  <!-- We can define assets here to be loaded when A-Frame initializes -->
+  <a-assets>
+    <img id="efouryouth" src="assets/e4YouthLogo.png" />
+    <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
+    <!-- <audio id="DialogueSound" src="assets/Blackland_Prairie.mp3" preload="auto"></audio> -->
+    <a-asset-item
+      id="jacobModel"
+      src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO4_grill.glb"></a-asset-item>
+    <audio id="DialogueSound" src="assets/Victory_Grill.mp3" preload="auto"></audio>
+    <a-entity
+      id="captionController"
+      captions="script: “Closed doors couldn’t stop us. We opened our own stages– filled with rhythm, soul, and hope.”
+The East 11th Street corridor was once the social hub of Austin’s Black community, yet nowadays it is hard to recognize what used to be here. The Victory Grill was a live music venue and restaurant on the Chitlin’ Circuit, where big-time artists from all over the country performed at Black-owned institutions throughout the Jim Crow era.
+Founded at the close of World War II in 1945 by Johnny Holmes, himself a Black veteran, this gave the community and the returning soldiers a place to unwind and socialize. It hosted Hall of Fame talent like B.B. King, James Brown, Ike and Tina Turner, Billie Holiday, Chuck Berry, and Etta James, not to mention the folks you haven’t even heard of. The Victory Grill attracted all kinds of people from all over Central Texas as soldiers, college students, even white locals and more showed up.
+Now known as Victory East, this venue is still open and still thriving. But, of course, this came with plenty of challenges. There was a fire in 1988 and gentrification has in many ways left the 11th Street Corridor unrecognizable. But thanks to a friend of the original owner named RV Adams and some other gracious people like Eva Lindsey, the venue, the Victory Grill, and its legacy are intact on Austin's East Side. The Victory Grill was added to the National Register of Historic Places in 1998."
+      info="duration: 108; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+    <a-entity
+      gltf-model="#jacobModel"
+      anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>
+  </a-assets>
+
+  <a-entity id="dialogueEntity" sound="src: #DialogueSound; autoplay: false; positional: false;">
+  </a-entity>
+
+  <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+  <a-camera
+    id="camera"
+    position="0 8 8"
+    raycaster="objects: .cantap"
+    cursor="
+      fuse: false;
+      rayOrigin: mouse;">
+  </a-camera>
+
+  <a-entity
+    light="
+      type: directional;
+      intensity: 3.9;
+      castShadow: true;
+      shadowMapHeight: 2048;
+      shadowMapWidth: 2048;
+      shadowCameraTop: 40;
+      shadowCameraBottom: -40;
+      shadowCameraRight: 40;
+      shadowCameraLeft: -40;"
+    position="0 10 0"
+    rotation="-90 0 0"
+    shadow>
+  </a-entity>
+
+  <a-light type="ambient" intensity=".7"></a-light>
+  <!-- Adding the cantap class allows the ground to be clicked -->
+  <a-box
+    id="ground"
+    class="cantap"
+    scale="1000 2 1000"
+    position="0 -0.99 0"
+    material="shader: shadow; transparent: true; opacity: 0.4"
+    shadow>
+  </a-box>
+</a-scene>
+
+</body>
+
+</html>

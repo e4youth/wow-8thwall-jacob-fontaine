@@ -1,0 +1,85 @@
+<!-- Copyright (c) 2022 8th Wall, Inc. -->
+<!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
+
+<div class="over">
+  <span id="promptText">Tap to place Jacob Fontaine</span>
+  <span id="captionText"></span>
+  <!-- <button onclick="document.getElementById('DialogueSound').play()">Play Audio</button> -->
+</div>
+
+<!-- Add the tap-place component to the scene so it has an effect -->
+<a-scene
+  tap-place
+  caption-comp
+  landing-page
+  xrextras-loading
+  xrextras-runtime-error
+  renderer="colorManagement:true; physicallyCorrectLights:true"
+  renderer.useLegacyLights="false;"
+  xrweb="
+    allowedDevices: any;
+    defaultEnvironmentFogIntensity: 0.5; 
+    defaultEnvironmentFloorTexture: #groundTex; 
+    defaultEnvironmentFloorColor: #FFF;
+    defaultEnvironmentSkyBottomColor: #B4C4CC; 
+    defaultEnvironmentSkyTopColor: #5ac8fa;
+    defaultEnvironmentSkyGradientStrength: 0.5;">
+  <!-- We can define assets here to be loaded when A-Frame initializes -->
+  <a-assets>
+    <!-- <img id="groundTex" src="assets/sand.jpg" /> -->
+    <a-asset-item
+      id="jacobModel"
+      src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO2_audiolag.glb"></a-asset-item>
+    <a-asset-item id="buildingModel" src="assets/GDB_low_rotated.glb"></a-asset-item>
+    <audio id="DialogueSound" src="assets/Gold_Dollar_Building.mp3" preload="auto"></audio>
+    <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
+
+    <a-entity
+      id="captionController"
+      captions="script: In 1876, I founded The Gold Dollar, one of the first Black weekly newspapers in the South, I founded the Gold Dollar to educate and strengthen the Black community. We were still living in the shadow of enslavement, and this made reading, writing, and communication crucial keys to freedom. The Gold Dollar was the first Black-owned newspaper in this capital city, known by some as the First Black Newspaper West of the Mississippi. Between 1870 and 1900, this was among 48 Black-owned commercial newspapers in Texas. Nowadays, the Gold Dollar building is not just a former newspaper office though, this is the last standing structure of Wheatville, a freedom colony in Central Austin."
+      info="duration: 51; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+    <a-entity
+      gltf-model="#jacobModel"
+      anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>
+  </a-assets>
+
+  <a-entity id="dialogueEntity" sound="src: #DialogueSound; autoplay: false; positional: false;">
+  </a-entity>
+
+  <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+  <a-camera
+    id="camera"
+    position="0 8 8"
+    raycaster="objects: .cantap"
+    cursor="
+      fuse: false;
+      rayOrigin: mouse;">
+  </a-camera>
+
+  <a-entity
+    light="
+      type: directional;
+      intensity: 3.9;
+      castShadow: true;
+      shadowMapHeight: 2048;
+      shadowMapWidth: 2048;
+      shadowCameraTop: 40;
+      shadowCameraBottom: -40;
+      shadowCameraRight: 40;
+      shadowCameraLeft: -40;"
+    position="0 10 0"
+    rotation="-90 0 0"
+    shadow>
+  </a-entity>
+
+  <a-light type="ambient" intensity=".7"></a-light>
+  <!-- Adding the cantap class allows the ground to be clicked -->
+  <a-box
+    id="ground"
+    class="cantap"
+    scale="1000 2 1000"
+    position="0 -0.99 0"
+    material="shader: shadow; transparent: true; opacity: 0.4"
+    shadow>
+  </a-box>
+</a-scene>
