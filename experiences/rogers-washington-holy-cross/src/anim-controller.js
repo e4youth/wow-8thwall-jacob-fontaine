@@ -13,6 +13,7 @@ export const animationComponent = {
     this.availableClipNames = []
     this.isAudioPlaying = false
     this.idleClip = 'NeutIdle'
+    this.idleAction = null
     const ground = document.getElementById('ground')
 
     this._onFinish = this.onAnimationFinished.bind(this)
@@ -44,7 +45,9 @@ export const animationComponent = {
     // Grab audio element directly from DOM
     this.audioEl = document.getElementById(this.data.audioId)
 
-    // console.log('this.data.lipSyncClip:', this.data.lipSyncClip)
+    // Start idle immediately (always-on motion)
+    this.startIdleAnimation()
+
     // Setup lip sync clip
     if (this.data.lipSyncClip) {
       const lipClip = THREE.AnimationClip.findByName(this.clips, this.data.lipSyncClip)
@@ -128,6 +131,34 @@ export const animationComponent = {
     // console.log('Playing animation clip:', clip.name)
   },
 
+  pickIdleClip() {
+    if (!this.clips || this.clips.length === 0) return null
+
+    // Prefer exact configured idle clip.
+    let clip = THREE.AnimationClip.findByName(this.clips, this.idleClip)
+    if (clip) return clip
+
+    // Fallback: any clip with "Idle" in the name.
+    clip = this.clips.find(c => /idle/i.test(c.name))
+    if (clip) return clip
+
+    // Fallback: any non-lipsync clip.
+    clip = this.clips.find(c => !/lipsync/i.test(c.name))
+    return clip || null
+  },
+
+  startIdleAnimation() {
+    if (!this.mixer) return
+    const idleClip = this.pickIdleClip()
+    if (!idleClip) return
+
+    const action = this.mixer.clipAction(idleClip)
+    action.reset()
+    action.setLoop(THREE.LoopRepeat, Infinity)
+    action.play()
+    this.idleAction = action
+  },
+
   playRandomClip() {
     if (!this.mixer || this.availableClipNames.length === 0) return
 
@@ -155,40 +186,48 @@ export const animationComponent = {
   onAudioPlay() {
     this.isAudioPlaying = true
     this.startLipAnimation()
-    this.playRandomClip()  // <--- start first random body anim immediately
+
+    // Pause idle while we play body motion clips.
+    if (this.idleAction) this.idleAction.paused = true
+
+    this.playRandomClip()  // start first random body anim immediately
+
     // Fire a custom A-Frame event from this entity
     this.el.emit('audio-play', {entityId: 'jacobEntity'}, true)  // 3rd arg is bubble
-    // console.log('[anim] Dispatched audio-play event')
   },
 
   onAudioPause() {
     this.isAudioPlaying = false
     this.stopLipAnimation()
     if (this.action) this.action.paused = true
+    if (this.idleAction) this.idleAction.paused = false
   },
 
   onAudioEnded() {
     this.isAudioPlaying = false
     this.stopLipAnimation()
 
-    // play neutral idle pose instead of leaving jacob into t-pose
-    const lastAction = this.mixer.clipAction(this.idleClip)
-    lastAction.reset()
-    lastAction.setLoop(THREE.LoopRepeat, Infinity)
-
-    // Fade out current body animation
+    // Return to idle loop.
     if (this.action) {
-      lastAction.crossFadeFrom(this.action, 0.5, false)
+      this.action.stop()
     }
 
-    lastAction.play()
-    this.action = lastAction
+    if (this.idleAction) {
+      this.idleAction.reset()
+      this.idleAction.paused = false
+      this.idleAction.play()
+      this.action = this.idleAction
+    } else {
+      // As a fallback, attempt to (re)start idle.
+      this.startIdleAnimation()
+      this.action = this.idleAction || null
+    }
 
     if (this.previousClip) {
       this.previousClip = null
     }
 
-    this.mixer.removeEventListener('finished', this._onFinish)
+    // Keep the mixer listener; it is harmless when not playing.
   },
 
   onAnimationFinished(e) {

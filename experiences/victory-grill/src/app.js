@@ -25,6 +25,34 @@ AFRAME.registerComponent('info', {
     textId: {type: 'string'},
   },
 })
+
+// UI hook: explicit narration playback button.
+// This avoids relying on tapping the ground and makes audio start a clear user gesture.
+window.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('playNarrationBtn')
+  const audio = document.getElementById('DialogueSound')
+  if (!btn || !audio) return
+
+  const resetBtn = () => {
+    btn.textContent = 'Play narration'
+    btn.disabled = false
+  }
+
+  btn.addEventListener('click', async () => {
+    try {
+      audio.currentTime = 0
+      await audio.play()
+      btn.textContent = 'Playing…'
+      btn.disabled = true
+    } catch (e) {
+      console.warn('Audio play blocked/failed', e)
+      btn.textContent = 'Tap again to play'
+    }
+  })
+
+  audio.addEventListener('ended', resetBtn)
+})
+
 // window.addEventListener('DOMContentLoaded', () => {
 //   const captionEntity = document.getElementById('captionController');
 
