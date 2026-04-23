@@ -1,0 +1,55 @@
+{
+  "source": "Huston-Tillotson_University_.mp3",
+  "version": "v1",
+  "unit": "seconds",
+  "segments": [
+    {
+      "id": "where_you_are",
+      "file": "huston-tillotson__where_you_are_v1.mp3",
+      "start": 0.0,
+      "end": 32.32,
+      "label": "Where you are",
+      "script": "Welcome to the Houston-Tillotson University. But first, let's take a step back. In 1881 and 82, history says that I, Mr. Jacob Fontaine, emerged as the leading Black advocate for the establishment of the University of Texas at Austin. And yes, it worked out. So I can assume you've heard of UT Austin by now. But a good decade or so before UT got started, back in the 1870s, Austin's first institution of higher learning was established."
+    },
+    {
+      "id": "why_it_matters",
+      "file": "huston-tillotson__why_it_matters_v1.mp3",
+      "start": 32.32,
+      "end": 66.72,
+      "label": "Why it matters",
+      "script": "It began with the American Missionary Society of Congregational Churches chartering Tillotson Collegiate and Normal Institute in 1875, opening its doors to students in 1881. By the end of the first year, there were about 100 students attending. From the beginning, enrollment here was considered a prestigious distinction. And so, most of 200 years ago, the story begins of this institution that remains a pillar in the Black community. It's the modern-day Houston-Tillotson University."
+    },
+    {
+      "id": "what_is_this_place",
+      "file": "huston-tillotson__what_is_this_place_v1.mp3",
+      "start": 67.52,
+      "end": 100.08,
+      "label": "What is this place",
+      "script": "With the annual Martin Luther King Day festival, and also countless other community events, something beautiful is always happening on this campus. Most consistently, you will see young people being professionally trained as they come of age while making long-lasting relationships here. It all started with an emphasis on moral and religious instruction. See, schools could not be racially mixed in the late 1800s because it was against the law. So, like the two schools that merged to form this university,"
+    },
+    {
+      "id": "key_fact",
+      "file": "huston-tillotson__key_fact_v1.mp3",
+      "start": 100.08,
+      "end": 136.0,
+      "label": "Key fact",
+      "script": "this campus was founded as a school specifically for Black students. Now known as one of 100 or so Historically Black Colleges and Universities, or HBCUs, Houston-Tillotson remains a small college campus with many academic majors as well as a graduate school. In 1952, Samuel Houston College and Tillotson College merged to form Houston-Tillotson College, affectionately known today as HT. In 2005, this campus officially became Houston-Tillotson"
+    },
+    {
+      "id": "deeper_history",
+      "file": "huston-tillotson__deeper_history_v1.mp3",
+      "start": 136.0,
+      "end": 166.64,
+      "label": "Deeper history",
+      "script": "University. This is the Blue Bonnet Hill area, once known as the Negro District and now known as the Sixth Square Black Cultural District. This higher learning institution still serves mostly Black students, but is no longer limited by legal racial exclusion. One amazing fact about HT is that the Jackie Robinson, yes Jackie Robinson, used to be the basketball coach and even an instructor here before he played for the Brooklyn Dodgers. The president of HT at that time, Carl"
+    },
+    {
+      "id": "wrap",
+      "file": "huston-tillotson__wrap_v1.mp3",
+      "start": 166.64,
+      "end": 195.76,
+      "label": "Wrap",
+      "script": "Downs, was like a father figure to Robinson. Another fact, Austin's oldest institution of higher learning here, the only Historically Black College and University in Austin, has been added to the National Register of Historic Places as a historic district. They said we couldn't learn, so we made our own institutions, places that powered our progress. Some of these places still visibly exist here in Austin, Texas."
+    }
+  ]
+}

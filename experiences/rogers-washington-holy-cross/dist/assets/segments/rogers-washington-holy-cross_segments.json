@@ -1,0 +1,55 @@
+{
+  "source": "Rogers-Washington-Holy_Cross_Historic_District_.mp3",
+  "version": "v1",
+  "unit": "seconds",
+  "segments": [
+    {
+      "id": "where_you_are",
+      "file": "rogers-washington-holy-cross__where_you_are_v1.mp3",
+      "start": 0.0,
+      "end": 27.02,
+      "label": "Where you are",
+      "script": "The Rogers Washington Holy Cross Historic District is a place where faith and family created strength. Churches, hospitals, schools, proof of our own foundations. This area is a timeless stamp of black professionalism in the form of an elegant middle-class neighborhood that emerged from the late 1940s to the 50s and 60s when most of the homes here were built."
+    },
+    {
+      "id": "why_it_matters",
+      "file": "rogers-washington-holy-cross__why_it_matters_v1.mp3",
+      "start": 27.02,
+      "end": 55.3,
+      "label": "Why it matters",
+      "script": "Historic mid-century American architecture accompanies a rich and remarkable history here. On September 3, 2020, Austin City Council voted to historically designate the Rogers Washington Holy Cross District. This is the eighth locally designated historic district and the first for a mostly African American neighborhood. So much East Austin and black history has been erased that somebody has to tell it."
+    },
+    {
+      "id": "what_is_this_place",
+      "file": "rogers-washington-holy-cross__what_is_this_place_v1.mp3",
+      "start": 55.3,
+      "end": 83.18,
+      "label": "What is this place",
+      "script": "If you don't hear it, let alone see it, sometimes it's like it never existed. Well, this historical district was developed as a shining light of what is possible. Yes, there was segregation and racism and white middle-class people were moving out of town to the suburbs. And yes, the black professionals in this community provided for themselves by using what they had and building what they needed right here."
+    },
+    {
+      "id": "key_fact",
+      "file": "rogers-washington-holy-cross__key_fact_v1.mp3",
+      "start": 83.18,
+      "end": 109.9,
+      "label": "Key fact",
+      "script": "World War II was over, but the style from that day and time remains evident here. Many of the houses were designed by John Chase himself. Mr. Chase was the first African American graduate of the University of Texas School of Architecture and he was the first black architect ever licensed in the state. Many of Austin's brightest black stars put their heads and hearts together to make this"
+    },
+    {
+      "id": "deeper_history",
+      "file": "rogers-washington-holy-cross__deeper_history_v1.mp3",
+      "start": 109.9,
+      "end": 137.9,
+      "label": "Deeper history",
+      "script": "area a reality. The chancellor of Houston Tillotson University lived here. The first ombudsman of UT Austin lived here. The principal of nearby Keeling Junior High lived here. The Kirk family, as in the postal workers, pilots, and eventually mayors and presidential cabinet members, the Kirk family lived here too. City council members lived here and a Tuskegee airman lived here."
+    },
+    {
+      "id": "wrap",
+      "file": "rogers-washington-holy-cross__wrap_v1.mp3",
+      "start": 137.9,
+      "end": 143.46,
+      "label": "Wrap",
+      "script": "Some of the earliest graduates of desegregated UT Austin lived here as well."
+    }
+  ]
+}

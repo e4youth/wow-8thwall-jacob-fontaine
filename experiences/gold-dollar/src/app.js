@@ -26,33 +26,6 @@ AFRAME.registerComponent('info', {
   },
 })
 
-// UI hook: explicit narration playback button.
-// This avoids relying on tapping the ground and makes audio start a clear user gesture.
-window.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('playNarrationBtn')
-  const audio = document.getElementById('DialogueSound')
-  if (!btn || !audio) return
-
-  const resetBtn = () => {
-    btn.textContent = 'Play narration'
-    btn.disabled = false
-  }
-
-  btn.addEventListener('click', async () => {
-    try {
-      audio.currentTime = 0
-      await audio.play()
-      btn.textContent = 'Playing…'
-      btn.disabled = true
-    } catch (e) {
-      console.warn('Audio play blocked/failed', e)
-      btn.textContent = 'Tap again to play'
-    }
-  })
-
-  audio.addEventListener('ended', resetBtn)
-})
-
 // window.addEventListener('DOMContentLoaded', () => {
 //   const captionEntity = document.getElementById('captionController');
 
@@ -77,3 +50,65 @@ window.addEventListener('DOMContentLoaded', () => {
 //     textId: 'captionText',
 //   })
 // })
+
+// UI hook: Quick answers (short segments).
+window.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('DialogueSound')
+  const captionController = document.getElementById('captionController')
+  const captionText = document.getElementById('captionText')
+  const buttons = Array.from(document.querySelectorAll('#quickAnswers [data-seg]'))
+  if (!audio || !captionController || buttons.length === 0) return
+
+  const SEGMENTS = {
+    where_you_are: {
+      src: 'assets/segments/gold-dollar__where_you_are_v1.mp3',
+      duration: 13.98,
+      script: "In 1876, I founded the Gold Dollar, one of the first Black weekly newspapers in the South. I founded the Gold Dollar to educate and strengthen the Black community.",
+    },
+    why_it_matters: {
+      src: 'assets/segments/gold-dollar__why_it_matters_v1.mp3',
+      duration: 8.88,
+      script: "We were still living in the shadow of enslavement and this made reading, writing, and communication crucial keys to freedom.",
+    },
+    what_is_this_place: {
+      src: 'assets/segments/gold-dollar__what_is_this_place_v1.mp3',
+      duration: 9.86,
+      script: "The Gold Dollar was the first Black-owned newspaper in this capital city, known by some as the first Black newspaper west of the Mississippi.",
+    },
+    key_fact: {
+      src: 'assets/segments/gold-dollar__key_fact_v1.mp3',
+      duration: 7.86,
+      script: "Between 1870 and 1900, this was among 48 Black-owned commercial newspapers in Texas.",
+    },
+    deeper_history: {
+      src: 'assets/segments/gold-dollar__deeper_history_v1.mp3',
+      duration: 5.28,
+      script: "Nowadays, the Gold Dollar building is not just a former newspaper office, though.",
+    },
+    wrap: {
+      src: 'assets/segments/gold-dollar__wrap_v1.mp3',
+      duration: 5.1,
+      script: "This is the last standing structure of Wheatville, a freedom colony in Central Austin.",
+    },
+  }
+
+  const setButtonsEnabled = (enabled) => { buttons.forEach((b) => { b.disabled = !enabled }) }
+
+  const playSeg = async (segId) => {
+    const seg = SEGMENTS[segId]
+    if (!seg) return
+    captionController.setAttribute('captions', `script: ${seg.script}`)
+    captionController.setAttribute('info', `duration: ${seg.duration}; chunkSize: 6; audioId: DialogueSound; textId: captionText`)
+    if (captionText) captionText.textContent = seg.script
+    audio.pause()
+    audio.currentTime = 0
+    audio.src = seg.src
+    audio.load()
+    setButtonsEnabled(false)
+    try { await audio.play() } catch (e) { console.warn('Audio play blocked/failed', e); setButtonsEnabled(true) }
+  }
+
+  buttons.forEach((btn) => { btn.addEventListener('click', () => playSeg(btn.getAttribute('data-seg'))) })
+  audio.addEventListener('ended', () => setButtonsEnabled(true))
+})
+

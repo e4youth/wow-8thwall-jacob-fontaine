@@ -4,7 +4,14 @@
 <div class="over">
   <span id="promptText">Tap to place Jacob Fontaine</span>
   <span id="captionText"></span>
-  <button id="playNarrationBtn" class="playBtn" type="button">Play narration</button>
+  <div id="quickAnswers" class="quickAnswers">
+    <button class="playBtn" type="button" data-seg="where_you_are">Where you are</button>
+    <button class="playBtn" type="button" data-seg="why_it_matters">Why it matters</button>
+    <button class="playBtn" type="button" data-seg="what_is_this_place">What is this place</button>
+    <button class="playBtn" type="button" data-seg="key_fact">Key fact</button>
+    <button class="playBtn" type="button" data-seg="deeper_history">Deeper history</button>
+    <button class="playBtn" type="button" data-seg="wrap">Wrap</button>
+  </div>
 </div>
 
 <!-- Add the tap-place component to the scene so it has an effect -->
@@ -31,13 +38,13 @@
       id="jacobModel"
       src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO2_audiolag.glb"></a-asset-item>
     <a-asset-item id="buildingModel" src="assets/GDB_low_rotated.glb"></a-asset-item>
-    <audio id="DialogueSound" src="assets/Gold_Dollar_Building.mp3" preload="auto"></audio>
+    <audio id="DialogueSound" src="assets/segments/gold-dollar__what_is_this_place_v1.mp3" preload="auto"></audio>
     <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
 
     <a-entity
       id="captionController"
-      captions="script: In 1876, I founded The Gold Dollar, one of the first Black weekly newspapers in the South, I founded the Gold Dollar to educate and strengthen the Black community. We were still living in the shadow of enslavement, and this made reading, writing, and communication crucial keys to freedom. The Gold Dollar was the first Black-owned newspaper in this capital city, known by some as the First Black Newspaper West of the Mississippi. Between 1870 and 1900, this was among 48 Black-owned commercial newspapers in Texas. Nowadays, the Gold Dollar building is not just a former newspaper office though, this is the last standing structure of Wheatville, a freedom colony in Central Austin."
-      info="duration: 51; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+      captions="script: Select a quick answer to begin."
+      info="duration: 14; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
     <a-entity
       gltf-model="#jacobModel"
       anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>

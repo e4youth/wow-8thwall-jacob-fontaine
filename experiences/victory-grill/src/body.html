@@ -4,7 +4,14 @@
 <div class="over">
   <span id="promptText">Tap to place Jacob Fontaine</span>
   <span id="captionText"></span>
-  <button id="playNarrationBtn" class="playBtn" type="button">Play narration</button>
+  <div id="quickAnswers" class="quickAnswers">
+    <button class="playBtn" type="button" data-seg="where_you_are">Where you are</button>
+    <button class="playBtn" type="button" data-seg="why_it_matters">Why it matters</button>
+    <button class="playBtn" type="button" data-seg="what_is_this_place">What is this place</button>
+    <button class="playBtn" type="button" data-seg="key_fact">Key fact</button>
+    <button class="playBtn" type="button" data-seg="deeper_history">Deeper history</button>
+    <button class="playBtn" type="button" data-seg="wrap">Wrap</button>
+  </div>
 </div>
 
 <!-- Add the tap-place component to the scene so it has an effect -->
@@ -35,18 +42,15 @@
   <a-assets>
     <img id="efouryouth" src="assets/e4YouthLogo.png" />
     <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
-    <!-- <audio id="DialogueSound" src="assets/Blackland_Prairie.mp3" preload="auto"></audio> -->
+    <!-- <audio id="DialogueSound" src="assets/segments/victory-grill__what_is_this_place_v1.mp3" preload="auto"></audio> -->
     <a-asset-item
       id="jacobModel"
       src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO4_grill.glb"></a-asset-item>
-    <audio id="DialogueSound" src="assets/Victory_Grill.mp3" preload="auto"></audio>
+    <audio id="DialogueSound" src="assets/segments/victory-grill__what_is_this_place_v1.mp3" preload="auto"></audio>
     <a-entity
       id="captionController"
-      captions="script: “Closed doors couldn’t stop us. We opened our own stages– filled with rhythm, soul, and hope.”
-The East 11th Street corridor was once the social hub of Austin’s Black community, yet nowadays it is hard to recognize what used to be here. The Victory Grill was a live music venue and restaurant on the Chitlin’ Circuit, where big-time artists from all over the country performed at Black-owned institutions throughout the Jim Crow era.
-Founded at the close of World War II in 1945 by Johnny Holmes, himself a Black veteran, this gave the community and the returning soldiers a place to unwind and socialize. It hosted Hall of Fame talent like B.B. King, James Brown, Ike and Tina Turner, Billie Holiday, Chuck Berry, and Etta James, not to mention the folks you haven’t even heard of. The Victory Grill attracted all kinds of people from all over Central Texas as soldiers, college students, even white locals and more showed up.
-Now known as Victory East, this venue is still open and still thriving. But, of course, this came with plenty of challenges. There was a fire in 1988 and gentrification has in many ways left the 11th Street Corridor unrecognizable. But thanks to a friend of the original owner named RV Adams and some other gracious people like Eva Lindsey, the venue, the Victory Grill, and its legacy are intact on Austin's East Side. The Victory Grill was added to the National Register of Historic Places in 1998."
-      info="duration: 108; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+      captions="script: Select a quick answer to begin."
+      info="duration: 14; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
     <a-entity
       gltf-model="#jacobModel"
       anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>

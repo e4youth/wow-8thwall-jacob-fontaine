@@ -4,7 +4,14 @@
 <div class="over">
   <span id="promptText">Tap to place Jacob Fontaine</span>
   <span id="captionText"></span>
-  <button id="playNarrationBtn" class="playBtn" type="button">Play narration</button>
+  <div id="quickAnswers" class="quickAnswers">
+    <button class="playBtn" type="button" data-seg="where_you_are">Where you are</button>
+    <button class="playBtn" type="button" data-seg="why_it_matters">Why it matters</button>
+    <button class="playBtn" type="button" data-seg="what_is_this_place">What is this place</button>
+    <button class="playBtn" type="button" data-seg="key_fact">Key fact</button>
+    <button class="playBtn" type="button" data-seg="deeper_history">Deeper history</button>
+    <button class="playBtn" type="button" data-seg="wrap">Wrap</button>
+  </div>
 </div>
 
 <!-- Add the tap-place component to the scene so it has an effect -->
@@ -35,23 +42,18 @@
   <a-assets>
     <img id="efouryouth" src="assets/e4YouthLogo.png" />
     <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
-    <!-- <audio id="DialogueSound" src="assets/Blackland_Prairie.mp3" preload="auto"></audio> -->
+    <!-- <audio id="DialogueSound" src="assets/segments/rogers-washington-holy-cross__what_is_this_place_v1.mp3" preload="auto"></audio> -->
     <a-asset-item
       id="jacobModel"
       src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO6_rogers.glb"></a-asset-item>
     <audio
       id="DialogueSound"
-      src="assets/Rogers-Washington-Holy_Cross_Historic_District_.mp3"
+      src="assets/segments/rogers-washington-holy-cross__what_is_this_place_v1.mp3"
       preload="auto"></audio>
     <a-entity
       id="captionController"
-      captions="script: “The Rogers Washington Holy Cross Historic District is a place where faith and family created strength - churches, hospitals, schools - proof of our own foundations.”
-This area is a timeless stamp of Black professionalism in the form of an elegant, middle-class neighborhood that emerged from the late 1940s to the 50s and 60s when most of the homes here were built. Classic midcentury American architecture accompanies a rich and remarkable history here.
-On September 3rd, 2020, Austin City Council voted to historically designate the Rogers Washington Holy Cross District. This is the eighth locally designated historic district, and the first for a mostly African American neighborhood. So much East Austin and Black history has been erased that somebody has to tell it. If you don't hear it – let alone see it. Sometimes it's like it never existed.
-Well, this historical district was developed as a shining light of what is possible. Yes, there was segregation and racism, and white middle-class people were moving out of town to the suburbs. And, yes, the Black professionals in this community provided for themselves by using what they had and building what they needed, right here.
-World War II was over, but the style from that day and time remains evident here. Many of the houses were designed by John Chase himself. Mr. Chase was the first African American graduate of the University of Texas School of Architecture AND he was the first Black architect ever licensed in the state. Many of Austin's brightest Black stars put their heads and hearts together to make this area a reality.
-The chancellor of Huston-Tillotson University lived here, the first ombudsman of UT-Austin lived here, the principal of nearby Kealing Junior High lived here. The Kirk family as in the postal workers, pilots, and eventually mayors, and presidential cabinet members– the Kirk family lived here too. City Council members lived here. And, a Tuskegee Airman lived here. Some of the earliest graduates of desegregated UT-Austin lived here as well."
-      info="duration: 143; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+      captions="script: Select a quick answer to begin."
+      info="duration: 14; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
     <a-entity
       gltf-model="#jacobModel"
       anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>

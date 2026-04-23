@@ -1,0 +1,49 @@
+{
+  "source": "Rosewood_Courts__Emancipation_Park.mp3",
+  "version": "v1",
+  "unit": "seconds",
+  "segments": [
+    {
+      "id": "where_you_are",
+      "file": "rosewood__where-you-are_v1.mp3",
+      "start": 0.0,
+      "end": 13.7,
+      "label": "Where you are"
+    },
+    {
+      "id": "why_it_matters",
+      "file": "rosewood__why-it-matters_v1.mp3",
+      "start": 13.7,
+      "end": 26.76,
+      "label": "Why it matters"
+    },
+    {
+      "id": "what_is_rosewood_courts",
+      "file": "rosewood__rosewood-courts-what-it-is_v1.mp3",
+      "start": 26.76,
+      "end": 40.76,
+      "label": "What is Rosewood Courts"
+    },
+    {
+      "id": "new_deal_and_lbj",
+      "file": "rosewood__new-deal-and-lbj_v1.mp3",
+      "start": 40.76,
+      "end": 52.76,
+      "label": "New Deal and LBJ"
+    },
+    {
+      "id": "emancipation_park_and_juneteenth",
+      "file": "rosewood__emancipation-park-juneteenth_v1.mp3",
+      "start": 56.76,
+      "end": 76.76,
+      "label": "Emancipation Park and Juneteenth"
+    },
+    {
+      "id": "thomas_j_white_and_wrap",
+      "file": "rosewood__thomas-j-white-and-wrap_v1.mp3",
+      "start": 82.76,
+      "end": 105.76,
+      "label": "Thomas J. White and wrap"
+    }
+  ]
+}

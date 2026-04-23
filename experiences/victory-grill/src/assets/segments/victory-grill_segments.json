@@ -1,0 +1,55 @@
+{
+  "source": "Victory_Grill.mp3",
+  "version": "v1",
+  "unit": "seconds",
+  "segments": [
+    {
+      "id": "where_you_are",
+      "file": "victory-grill__where_you_are_v1.mp3",
+      "start": 0.0,
+      "end": 20.64,
+      "label": "Where you are",
+      "script": "Closed doors couldn't stop us. We opened our own stages, filled with rhythm, soul, and hope. The East 11th Street Corridor was once the social hub of Austin's black community, yet nowadays it is hard to recognize what used to be here. The Victory Grill was a live music venue and restaurant"
+    },
+    {
+      "id": "why_it_matters",
+      "file": "victory-grill__why_it_matters_v1.mp3",
+      "start": 20.64,
+      "end": 39.64,
+      "label": "Why it matters",
+      "script": "on the Chitlin Circuit, where big-time artists from all over the country performed at black-owned institutions throughout the Jim Crow era. Founded at the close of World War II in 1945 by Johnny Holmes, himself a black veteran, this gave the community and the returning soldiers"
+    },
+    {
+      "id": "what_is_this_place",
+      "file": "victory-grill__what_is_this_place_v1.mp3",
+      "start": 39.64,
+      "end": 59.6,
+      "label": "What is this place",
+      "script": "a place to unwind and to socialize. It hosted Hall of Fame talent like B.B. King, James Brown, Ike and Tina Turner, Billie Holiday, Chuck Berry, and Etta James, not to mention all the folks you haven't even heard of. The Victory Grill attracted all kinds of people"
+    },
+    {
+      "id": "key_fact",
+      "file": "victory-grill__key_fact_v1.mp3",
+      "start": 59.6,
+      "end": 77.98,
+      "label": "Key fact",
+      "script": "from all over Central Texas, as soldiers, college students, even white locals, and more showed up. Now known as Victory East, this venue is still open and still thriving, but of course this came with plenty of challenges."
+    },
+    {
+      "id": "deeper_history",
+      "file": "victory-grill__deeper_history_v1.mp3",
+      "start": 77.98,
+      "end": 98.64,
+      "label": "Deeper history",
+      "script": "There was a fire in 1988, and gentrification has in many ways left the 11th Street Corridor unrecognizable, but thanks to a friend of the original owner named R.V. Adams and some other gracious people like Eva Lindsey, the venue, the Victory Grill, and its legacy"
+    },
+    {
+      "id": "wrap",
+      "file": "victory-grill__wrap_v1.mp3",
+      "start": 98.64,
+      "end": 107.88,
+      "label": "Wrap",
+      "script": "are intact on Austin's east side. The Victory Grill was added to the National Register of Historic Places in 1998."
+    }
+  ]
+}

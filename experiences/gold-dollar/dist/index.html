@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jacob Fontaine &amp; Gold Dollar Building</title><meta itemprop="name" content="Jacob Fontaine &amp; Gold Dollar Building "><meta name="twitter:title" content="Jacob Fontaine &amp; Gold Dollar Building "><meta property="og:title" content="Jacob Fontaine &amp; Gold Dollar Building "><meta property="og:site_name" content="Jacob Fontaine &amp; Gold Dollar Building "><meta name="description" content=""><meta itemprop="description" content=""><meta property="og:description" content=""><meta name="twitter:description" content=""><script crossorigin="anonymous" src="./external/xrextras/xrextras.js"></script><script crossorigin="anonymous" src="./external/landing-page/landing-page.js"></script><script crossorigin="anonymous" src="./external/xr/xr.js" async="true" data-preload-chunks="face, slam"></script><script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script><script src="./external/scripts/aframe-extras-7.2.0.min.js" crossorigin="anonymous"></script><meta name="8thwall:package" content="@8thwall.xrextras"/><meta name="8thwall:package" content="@8thwall.landing-page"/></head><body><script src="bundle.js"></script><div class="over"><span id="promptText">Tap to place Jacob Fontaine</span> <span id="captionText"></span></div><a-scene tap-place caption-comp landing-page xrextras-loading xrextras-runtime-error renderer="colorManagement:true; physicallyCorrectLights:true" renderer.uselegacylights="false;" xrweb="
+    allowedDevices: any;
+    defaultEnvironmentFogIntensity: 0.5; 
+    defaultEnvironmentFloorTexture: #groundTex; 
+    defaultEnvironmentFloorColor: #FFF;
+    defaultEnvironmentSkyBottomColor: #B4C4CC; 
+    defaultEnvironmentSkyTopColor: #5ac8fa;
+    defaultEnvironmentSkyGradientStrength: 0.5;"><a-assets><a-asset-item id="jacobModel" src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO2_audiolag.glb"></a-asset-item><a-asset-item id="buildingModel" src="assets/GDB_low_rotated.glb"></a-asset-item><audio id="DialogueSound" src="assets/Gold_Dollar_Building.mp3" preload="auto"></audio><a-entity id="captionController" captions="script: In 1876, I founded The Gold Dollar, one of the first Black weekly newspapers in the South, I founded the Gold Dollar to educate and strengthen the Black community. We were still living in the shadow of enslavement, and this made reading, writing, and communication crucial keys to freedom. The Gold Dollar was the first Black-owned newspaper in this capital city, known by some as the First Black Newspaper West of the Mississippi. Between 1870 and 1900, this was among 48 Black-owned commercial newspapers in Texas. Nowadays, the Gold Dollar building is not just a former newspaper office though, this is the last standing structure of Wheatville, a freedom colony in Central Austin." info="duration: 51; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity><a-entity gltf-model="#jacobModel" anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity></a-assets><a-entity id="dialogueEntity" sound="src: #DialogueSound; autoplay: false; positional: false;"></a-entity><a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
+      fuse: false;
+      rayOrigin: mouse;"></a-camera><a-entity light="
+      type: directional;
+      intensity: 3.9;
+      castShadow: true;
+      shadowMapHeight: 2048;
+      shadowMapWidth: 2048;
+      shadowCameraTop: 40;
+      shadowCameraBottom: -40;
+      shadowCameraRight: 40;
+      shadowCameraLeft: -40;" position="0 10 0" rotation="-90 0 0" shadow></a-entity><a-light type="ambient" intensity=".7"></a-light><a-box id="ground" class="cantap" scale="1000 2 1000" position="0 -0.99 0" material="shader: shadow; transparent: true; opacity: 0.4" shadow></a-box></a-scene></body></html>

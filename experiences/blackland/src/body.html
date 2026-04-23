@@ -4,7 +4,14 @@
 <div class="over">
   <span id="promptText">Tap to place Jacob Fontaine</span>
   <span id="captionText"></span>
-  <button id="playNarrationBtn" class="playBtn" type="button">Play narration</button>
+  <div id="quickAnswers" class="quickAnswers">
+    <button class="playBtn" type="button" data-seg="where_you_are">Where you are</button>
+    <button class="playBtn" type="button" data-seg="why_it_matters">Why it matters</button>
+    <button class="playBtn" type="button" data-seg="what_is_this_place">What is this place</button>
+    <button class="playBtn" type="button" data-seg="key_fact">Key fact</button>
+    <button class="playBtn" type="button" data-seg="deeper_history">Deeper history</button>
+    <button class="playBtn" type="button" data-seg="wrap">Wrap</button>
+  </div>
 </div>
 
 <!-- Add the tap-place component to the scene so it has an effect -->
@@ -35,17 +42,15 @@
   <a-assets>
     <img id="efouryouth" src="assets/e4YouthLogo.png" />
     <!-- <a-asset-item id="birdModel" src="assets/bird_1.glb" animation-mixer="clip:*;"></a-asset-item> -->
-    <!-- <audio id="DialogueSound" src="assets/Blackland_Prairie.mp3" preload="auto"></audio> -->
+    <!-- <audio id="DialogueSound" src="assets/segments/blackland__what_is_this_place_v1.mp3" preload="auto"></audio> -->
     <a-asset-item
       id="jacobModel"
       src="assets/Jacob_animations_blendshapes_addIdle.glb"></a-asset-item>
-    <audio id="DialogueSound" src="assets/Blackland_Prairie.mp3" preload="auto"></audio>
+    <audio id="DialogueSound" src="assets/segments/blackland__what_is_this_place_v1.mp3" preload="auto"></audio>
     <a-entity
       id="captionController"
-      captions="script: At first the soil was so dark and so rich. Once home to indigenous people, the land became known as part of the Blackland Prairie. By the 1800s a community of Swedish immigrants lived over here, and it was called the Blacklands. Naturally, originally, the soil was so dark and rich. Eventually the people were dark and rich, too. Maybe rich in spirit, maybe rich in history, maybe rich in resilience, maybe rich in wealth. In some cases, the people who established the community that would become known as the Blackland Neighborhood were rich in all of the above. Being dark and rich like the Blackland soil while actually living over here was the result of a bigger plan. The city of Austin’s 1928 plan forced racial segregation in the city, and if you wanted access to public resources and opportunities as a Black citizen here, you had to live east of East Avenue - which is now known as Interstate Highway 35. Once the city officially designated where white people, where brown people, and where Black people were required to live in town, this area right here became THE hub of the Black community. Black folks could legally own land and build businesses here, and that’s exactly what happened. Within 10 years of 1928, this became a thriving Black neighborhood and community that sustained itself with business, culture, faith, and education along with other Black East Austin areas… by the 1960s, Blackland was a thriving Black neighborhood. By the 1980s, the University of Texas at Austin – that same school I fought to help get established – was threatening to demolish about half of the neighborhood to expand their college campus. UT-Austin wanted to buy, to bulldoze, and to build right on top of Blackland, after all that the black community had been through and built through. A legal concept called eminent domain could justify it, but residents formed an association and corporation to stop it.
-So, in the past 100 years, the Blackland Neighborhood has gone from a place that formerly enslaved Africans were forced to live to the place the University wanted to build on top of…to a place that the community had to fight to stop the University from further erasing …to a combination of all of the above.
-“We carved out lives here–gardens, homes, futures. Though threatened, Blackland still thrives.”"
-      info="duration: 181; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+      captions="script: Select a quick answer to begin."
+      info="duration: 14; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
     <a-entity
       gltf-model="#jacobModel"
       anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>

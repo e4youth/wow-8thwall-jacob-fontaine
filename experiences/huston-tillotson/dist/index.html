@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Huston-Tillotson University Jacob Fontaine</title><meta itemprop="name" content="Huston-Tillotson University Jacob Fontaine"><meta name="twitter:title" content="Huston-Tillotson University Jacob Fontaine"><meta property="og:title" content="Huston-Tillotson University Jacob Fontaine"><meta property="og:site_name" content="Huston-Tillotson University Jacob Fontaine"><meta name="description" content=""><meta itemprop="description" content=""><meta property="og:description" content=""><meta name="twitter:description" content=""><script crossorigin="anonymous" src="./external/xrextras/xrextras.js"></script><script crossorigin="anonymous" src="./external/landing-page/landing-page.js"></script><script crossorigin="anonymous" src="./external/xr/xr.js" async="true" data-preload-chunks="face, slam"></script><script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script><script src="./external/scripts/aframe-extras-7.2.0.min.js" crossorigin="anonymous"></script><meta name="8thwall:package" content="@8thwall.xrextras"/><meta name="8thwall:package" content="@8thwall.landing-page"/></head><body><script src="bundle.js"></script><div class="over"><span id="promptText">Tap to place Jacob Fontaine</span> <span id="captionText"></span></div><a-scene tap-place caption-comp landing-page xrextras-loading xrextras-runtime-error renderer="colorManagement:true; physicallyCorrectLights:true" renderer.uselegacylights="false;" xrweb="
+    allowedDevices: any;
+    defaultEnvironmentFogIntensity: 0.5; 
+    defaultEnvironmentFloorTexture: #groundTex; 
+    defaultEnvironmentFloorColor: #FFF;
+    defaultEnvironmentSkyBottomColor: #B4C4CC; 
+    defaultEnvironmentSkyTopColor: #5ac8fa;
+    defaultEnvironmentSkyGradientStrength: 0.5;"><a-assets><a-asset-item id="jacobModel" src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO3_huston.glb"></a-asset-item><audio id="DialogueSound" src="assets/Huston-Tillotson_University_.mp3" preload="auto"></audio><a-entity id="captionController" captions="script: Welcome to the Huston-Tillotson University. But first – let’s take a step back.
+
+In 1881 – 82, history says that I – Mr. Jacob Fontaine – emerged as the leading Black advocate for the establishment of the University of Texas at Austin. And, yes, it worked out. So I can assume you’ve heard of UT-Austin by now.
+
+But a good decade or so before UT got started, back in the 1870s, Austin’s first institution of higher learning was established. It began with the American Missionary Society of Congregational Churches chartering Tillotson Collegiate and Normal Institute in 1875, opening its doors to students in 1881. By the end of the first year, there were about 100 students attending. From the very beginning, enrollment here was considered a prestigious distinction.
+
+And so – most of 200 years ago – the story begins of this institution that remains a pillar in the Black community: the modern-day Huston-Tillotson University. With the annual Martin Luther King Day Festival – and also countless other community events – something beautiful is always happening on this campus. Most consistently, you will see young people being professionally trained as they come of age, while making long-lasting relationships here.
+
+It all started with an emphasis on moral and religious instruction. Schools could not be racially mixed in the late 1800s – because it was against the law. So, like the two schools that merged to form this university, this campus was founded as a school specifically for Black students.
+
+Now known as one of 100 or so Historically Black Colleges and Universities (or HBCUs) – Huston-Tillotson remains a small college campus with many academic majors as well as a graduate school.
+
+In 1952, Samuel Huston College and Tillotson College merged to form Huston-Tillotson College (affectionately known today as H-T). In 2005, this campus officially became Huston-Tillotson University.
+
+This is the Bluebonnet Hill area – once known as the Negro District – and now known as the Six Square Black Cultural District. This higher learning institution still serves mostly Black students, but is no longer limited by legal racial exclusion.
+
+One amazing fact about H-T is that the Jackie Robinson - yes, Jackie Robinson used to be the basketball coach – and even an instructor here – before he played for the Brooklyn Dodgers. The president of H-T at the time, Karl Downs, was like a father figure to Robinson.
+
+Another fact? Austin’s oldest institution of higher learning here – and the only Historically Black College and University – has been added to the National Register of Historic Places as a historic district.
+
+“They said we couldn’t learn, so we made our own institutions – places that powered our progress. Some of these places still visibly exist here in Austin, Texas.”" info="duration: 196; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity><a-entity gltf-model="#jacobModel" anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity></a-assets><a-entity id="dialogueEntity" sound="src: #DialogueSound; autoplay: false; positional: false;"></a-entity><a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
+      fuse: false;
+      rayOrigin: mouse;"></a-camera><a-entity light="
+      type: directional;
+      intensity: 3.9;
+      castShadow: true;
+      shadowMapHeight: 2048;
+      shadowMapWidth: 2048;
+      shadowCameraTop: 40;
+      shadowCameraBottom: -40;
+      shadowCameraRight: 40;
+      shadowCameraLeft: -40;" position="0 10 0" rotation="-90 0 0" shadow></a-entity><a-light type="ambient" intensity=".7"></a-light><a-box id="ground" class="cantap" scale="1000 2 1000" position="0 -0.99 0" material="shader: shadow; transparent: true; opacity: 0.4" shadow></a-box></a-scene></body></html>

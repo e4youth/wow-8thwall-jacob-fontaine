@@ -163,7 +163,7 @@ export const animationComponent = {
     this.playRandomClip()  // start first random body anim immediately
 
     // Fire a custom A-Frame event from this entity
-    this.el.emit('audio-play', {entityId: 'jacobEntity'}, true)  // 3rd arg is bubble
+    this.el.emit('audio-play', {entityId: 'dialogueEntity'}, true)  // 3rd arg is bubble
   },
 
   onAudioPause() {

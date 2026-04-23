@@ -26,33 +26,6 @@ AFRAME.registerComponent('info', {
   },
 })
 
-// UI hook: explicit narration playback button.
-// This avoids relying on tapping the ground and makes audio start a clear user gesture.
-window.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('playNarrationBtn')
-  const audio = document.getElementById('DialogueSound')
-  if (!btn || !audio) return
-
-  const resetBtn = () => {
-    btn.textContent = 'Play narration'
-    btn.disabled = false
-  }
-
-  btn.addEventListener('click', async () => {
-    try {
-      audio.currentTime = 0
-      await audio.play()
-      btn.textContent = 'Playing…'
-      btn.disabled = true
-    } catch (e) {
-      console.warn('Audio play blocked/failed', e)
-      btn.textContent = 'Tap again to play'
-    }
-  })
-
-  audio.addEventListener('ended', resetBtn)
-})
-
 // window.addEventListener('DOMContentLoaded', () => {
 //   const captionEntity = document.getElementById('captionController');
 
@@ -77,3 +50,65 @@ window.addEventListener('DOMContentLoaded', () => {
 //     textId: 'captionText',
 //   })
 // })
+
+// UI hook: Quick answers (short segments).
+window.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('DialogueSound')
+  const captionController = document.getElementById('captionController')
+  const captionText = document.getElementById('captionText')
+  const buttons = Array.from(document.querySelectorAll('#quickAnswers [data-seg]'))
+  if (!audio || !captionController || buttons.length === 0) return
+
+  const SEGMENTS = {
+    where_you_are: {
+      src: 'assets/segments/huston-tillotson__where_you_are_v1.mp3',
+      duration: 32.32,
+      script: "Welcome to the Houston-Tillotson University. But first, let's take a step back. In 1881 and 82, history says that I, Mr. Jacob Fontaine, emerged as the leading Black advocate for the establishment of the University of Texas at Austin. And yes, it worked out. So I can assume you've heard of UT Austin by now. But a good decade or so before UT got started, back in the 1870s, Austin's first institution of higher learning was established.",
+    },
+    why_it_matters: {
+      src: 'assets/segments/huston-tillotson__why_it_matters_v1.mp3',
+      duration: 34.4,
+      script: "It began with the American Missionary Society of Congregational Churches chartering Tillotson Collegiate and Normal Institute in 1875, opening its doors to students in 1881. By the end of the first year, there were about 100 students attending. From the beginning, enrollment here was considered a prestigious distinction. And so, most of 200 years ago, the story begins of this institution that remains a pillar in the Black community. It's the modern-day Houston-Tillotson University.",
+    },
+    what_is_this_place: {
+      src: 'assets/segments/huston-tillotson__what_is_this_place_v1.mp3',
+      duration: 32.56,
+      script: "With the annual Martin Luther King Day festival, and also countless other community events, something beautiful is always happening on this campus. Most consistently, you will see young people being professionally trained as they come of age while making long-lasting relationships here. It all started with an emphasis on moral and religious instruction. See, schools could not be racially mixed in the late 1800s because it was against the law. So, like the two schools that merged to form this university,",
+    },
+    key_fact: {
+      src: 'assets/segments/huston-tillotson__key_fact_v1.mp3',
+      duration: 35.92,
+      script: "this campus was founded as a school specifically for Black students. Now known as one of 100 or so Historically Black Colleges and Universities, or HBCUs, Houston-Tillotson remains a small college campus with many academic majors as well as a graduate school. In 1952, Samuel Houston College and Tillotson College merged to form Houston-Tillotson College, affectionately known today as HT. In 2005, this campus officially became Houston-Tillotson",
+    },
+    deeper_history: {
+      src: 'assets/segments/huston-tillotson__deeper_history_v1.mp3',
+      duration: 30.64,
+      script: "University. This is the Blue Bonnet Hill area, once known as the Negro District and now known as the Sixth Square Black Cultural District. This higher learning institution still serves mostly Black students, but is no longer limited by legal racial exclusion. One amazing fact about HT is that the Jackie Robinson, yes Jackie Robinson, used to be the basketball coach and even an instructor here before he played for the Brooklyn Dodgers. The president of HT at that time, Carl",
+    },
+    wrap: {
+      src: 'assets/segments/huston-tillotson__wrap_v1.mp3',
+      duration: 29.12,
+      script: "Downs, was like a father figure to Robinson. Another fact, Austin's oldest institution of higher learning here, the only Historically Black College and University in Austin, has been added to the National Register of Historic Places as a historic district. They said we couldn't learn, so we made our own institutions, places that powered our progress. Some of these places still visibly exist here in Austin, Texas.",
+    },
+  }
+
+  const setButtonsEnabled = (enabled) => { buttons.forEach((b) => { b.disabled = !enabled }) }
+
+  const playSeg = async (segId) => {
+    const seg = SEGMENTS[segId]
+    if (!seg) return
+    captionController.setAttribute('captions', `script: ${seg.script}`)
+    captionController.setAttribute('info', `duration: ${seg.duration}; chunkSize: 6; audioId: DialogueSound; textId: captionText`)
+    if (captionText) captionText.textContent = seg.script
+    audio.pause()
+    audio.currentTime = 0
+    audio.src = seg.src
+    audio.load()
+    setButtonsEnabled(false)
+    try { await audio.play() } catch (e) { console.warn('Audio play blocked/failed', e); setButtonsEnabled(true) }
+  }
+
+  buttons.forEach((btn) => { btn.addEventListener('click', () => playSeg(btn.getAttribute('data-seg'))) })
+  audio.addEventListener('ended', () => setButtonsEnabled(true))
+})
+
