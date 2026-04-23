@@ -37,13 +37,25 @@
   text-align: center; /* Keep text centered */
 }
 
-.playBtn {
+.quickAnswers {
   position: absolute;
   left: 50%;
   bottom: 20vh;
   transform: translate(-50%, 0);
+  width: min(92vw, 720px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
   pointer-events: auto;
-  padding: 12px 16px;
+}
+
+@media (min-width: 680px) {
+  .quickAnswers { grid-template-columns: 1fr 1fr; }
+}
+
+.playBtn {
+  pointer-events: auto;
+  padding: 12px 14px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.55);
   background: rgba(0, 0, 0, 0.45);
@@ -53,5 +65,9 @@
 }
 
 .playBtn:active {
-  transform: translate(-50%, 0) scale(0.98);
+  transform: scale(0.98);
+}
+
+.playBtn[disabled] {
+  opacity: 0.55;
 }

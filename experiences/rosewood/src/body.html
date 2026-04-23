@@ -4,7 +4,14 @@
 <div class="over">
   <span id="promptText">Tap to place Jacob Fontaine</span>
   <span id="captionText"></span>
-  <button id="playNarrationBtn" class="playBtn" type="button">Play narration</button>
+  <div id="quickAnswers" class="quickAnswers">
+    <button class="playBtn" type="button" data-seg="where_you_are">Where you are</button>
+    <button class="playBtn" type="button" data-seg="why_it_matters">Why it matters</button>
+    <button class="playBtn" type="button" data-seg="what_is_rosewood_courts">What is Rosewood Courts</button>
+    <button class="playBtn" type="button" data-seg="new_deal_and_lbj">New Deal and LBJ</button>
+    <button class="playBtn" type="button" data-seg="emancipation_park_and_juneteenth">Emancipation Park and Juneteenth</button>
+    <button class="playBtn" type="button" data-seg="thomas_j_white_and_wrap">Thomas J. White and wrap</button>
+  </div>
 </div>
 
 <!-- Add the tap-place component to the scene so it has an effect -->
@@ -41,14 +48,12 @@
       src="assets/Jacob_animations_blendshapes_addIdle_slowHold_VO5_rosewood.glb"></a-asset-item>
     <audio
       id="DialogueSound"
-      src="assets/Rosewood_Courts__Emancipation_Park.mp3"
+      src="assets/segments/rosewood__rosewood-courts-what-it-is_v1.mp3"
       preload="auto"></audio>
     <a-entity
       id="captionController"
-      captions="script: If you travel Southbound from the intersection of 12th Street and Chicon Street toward Huston-Tillotson University, you will make it to the bottom of a short hill, maybe without knowing how unique of a position you're actually in. These grounds hold our challenges and our triumphs, where families found homes and where we reclaimed our freedom. This is a uniquely wondrous historical site in more ways than one. See, on the corner of Rosewood and Chicon, Rosewood Courts, the first public housing project for African Americans in the United States, has been home to East Austin residents since 1939. This community of homes was established as part of President Franklin D. Roosevelt's New Deal, and also was lobbied for by then-Congressman Lyndon Baines Johnson (or LBJ). And then there's a more, extended history of this location as well.
-You see, the site of Rosewood Courts here was originally Emancipation Park, an extremely important social and recreational site where Juneteenth celebrations date all the way back to 1930. This is where Black families reunited to publicly celebrate our freedom and progress on our own terms. Emancipation Park was purchased by Black community members for use by the Black community. This land was originally bought by a formerly enslaved man named Thomas J. White. Once he started the Emancipation Park Association back in 1905, he bought a 5-acre tract right here within two years time.
-So, it's fitting that this place sits at the bottom of a hill, because the stories and significance run deep. What once was a location established to commemorate liberation became a groundbreaking living space. And these apartment buildings were old, and yet – as you can see – they're only getting better with time!"
-      info="duration: 121; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
+      captions="script: Select a quick answer to begin."
+      info="duration: 14; chunkSize: 6; audioId: DialogueSound; textId: captionText"></a-entity>
     <a-entity
       gltf-model="#jacobModel"
       anim-controller="lipSyncClip: Jacob Fontaine-LipSyncAction; audioId: DialogueSound"></a-entity>
